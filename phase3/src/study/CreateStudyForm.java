@@ -9,19 +9,23 @@ import java.util.Scanner;
 
 import static util.DatabaseUtil.getConnection;
 
-public class CreateStudy {
+public class CreateStudyForm {
 
-    Connection conn;
+    static Connection conn;
     Statement stmt;
+    StudyDTO studyDTO;
+    String tempString;
+    Integer tempInt;
+    Scanner sc;
 
-    public CreateStudy() throws SQLException, ParseException {
+    public CreateStudyForm() throws SQLException {
         conn = getConnection();
         stmt = conn.createStatement();
-        StudyDTO studyDTO = new StudyDTO();
-        String tempString;
-        Integer tempInt;
-        Scanner sc = new Scanner(System.in);
+        studyDTO = new StudyDTO();
+        sc = new Scanner(System.in);
+    }
 
+    public void displayCreateStudyForm() throws ParseException, SQLException {
         System.out.println("=========================================");
         System.out.println("[스터디 생성]\n");
         System.out.println("-스터디 이름: ");
@@ -55,6 +59,5 @@ public class CreateStudy {
         ResultSet rs = StudyDAO.createStudy(studyDTO);
         System.out.println("스터디 생성이 완료되었습니다.");
         System.out.println("목록으로 돌아갑니다.");
-
     }
 }

@@ -49,7 +49,7 @@ public class StudyDAO {
     public static ResultSet readListOfStudy(Statement stmt) throws SQLException {
         ResultSet rs = null;
         sb = new StringBuffer();
-        sb.append("SELECT name FROM STUDY_ ");
+        sb.append("SELECT * FROM STUDY_ ");
         sql = sb.toString();
 
         try {

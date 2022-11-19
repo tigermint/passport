@@ -37,6 +37,9 @@
 # ignore .idea folder
 .idea/
 
+#ingnore Test folder
+test/
+
 #ignore StudyDAOTest
 src/test/java/dao/StudyDAOTest.java
 D:\study\passport\phase3\src\study\StudyDAOTest.java
