@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.logging.Logger;
 
 public class DatabaseUtil {
-    public static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+    public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
     public static final String USER_UNIVERSITY = "university";
     public static final String USER_PASSWD = "comp322";
 

@@ -1,10 +1,12 @@
 package study;
 
-import java.util.Date;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 
 public class StudyDTO {
 
-    String id;
+    Integer id;
     String name;
     Integer totalRound;
     Integer ParticipationFee;
@@ -20,11 +22,11 @@ public class StudyDTO {
 
     }
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -104,8 +106,10 @@ public class StudyDTO {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+    public void setStartDate(String startDate) throws ParseException {
+
+        Date date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(startDate).getTime());
+        this.startDate = date;
     }
 
 }
