@@ -19,7 +19,7 @@ public class StudyDTO {
     Date startDate;
 
     public StudyDTO() {
-
+        this.isComplete = false;
     }
 
     public Integer getId() {
