@@ -64,7 +64,7 @@ public class StudyDAO {
         return rs;
     }
 
-    public static ResultSet readDetailOfStudy(Statement stmt, Integer id) throws SQLException {
+    public static ResultSet readDetailOfStudy(Integer id) throws SQLException {
         ResultSet rs = null;
         sb = new StringBuffer();
         sb.append("select * from study_ where id = ?");
@@ -75,9 +75,9 @@ public class StudyDAO {
 
         try {
             rs = ps.executeQuery();
-            LOG.info("Study created");
+            LOG.info("Study Detail successfully retrieved.");
         } catch (SQLException e) {
-            LOG.warning("Study creation failed");
+            LOG.warning("Error retrieving Study Detail.");
             throw new RuntimeException(e);
         }
 

@@ -37,11 +37,10 @@
 # ignore .idea folder
 .idea/
 
-#ignore StudyTest.java
-StudyTest.java
-
 #ignore StudyDAOTest
 src/test/java/dao/StudyDAOTest.java
+D:\study\passport\phase3\src\study\StudyDAOTest.java
+
 
 # Gradle and Maven with auto-import
 # When using Gradle or Maven with auto-import, you should exclude module files,
@@ -141,3 +140,5 @@ Privacy
 Security
 Status
 Docs
+.idea\
+StudyDAOTest.java
