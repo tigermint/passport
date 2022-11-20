@@ -67,7 +67,9 @@ public class StudyDAO {
     public static ResultSet readDetailOfStudy(Integer id) throws SQLException {
         ResultSet rs = null;
         sb = new StringBuffer();
-        sb.append("select * from study_ where id = ?");
+        sb.append("select s.id studyId, s.name studyName , u.name UserName, s.total_round, s.participation_Fee, s.Max_Participants, s.Max_absent_Time, s.Location, s.start_date ");
+        sb.append("from study_ s,participate p, user_ u ");
+        sb.append("where s.id = p.study_id and u.id = p.user__id and s.id= ?");
         sql = sb.toString();
         PreparedStatement ps = conn.prepareStatement(sql);
         ps.setInt(1, id);
