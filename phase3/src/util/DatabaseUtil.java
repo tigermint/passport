@@ -4,15 +4,15 @@ import java.sql.*;
 import java.util.logging.Logger;
 
 public class DatabaseUtil {
-    public static final String URL = "jdbc:oracle:thin:@localhost:1521:orcl";
-    public static final String USER_UNIVERSITY = "university";
-    public static final String USER_PASSWD = "comp322";
+    public static final String URL = "jdbc:oracle:thin:@localhost:1521:xe";
+    public static final String USER_ID = "project";
+    public static final String USER_PASSWD = "1234";
 
 
     public static Connection getConnection() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
-            return DriverManager.getConnection(URL, USER_UNIVERSITY, USER_PASSWD);
+            return DriverManager.getConnection(URL, USER_ID, USER_PASSWD);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -36,6 +36,25 @@ public class DatabaseUtil {
             // TODO Auto-generated catch block
             e.printStackTrace();
             return false;
+        }
+    }
+
+    public static void commit(Connection conn) {
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.commit();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void rollback(Connection conn) {
+        try {
+            if(conn != null && !conn.isClosed())
+                conn.rollback();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 }
