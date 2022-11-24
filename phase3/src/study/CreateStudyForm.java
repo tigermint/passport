@@ -28,6 +28,7 @@ public class CreateStudyForm {
     public void displayCreateStudyForm() throws ParseException, SQLException {
         System.out.println("=========================================");
         System.out.println("[스터디 생성]\n");
+
         System.out.println("-스터디 이름: ");
         tempString = sc.nextLine();
         studyDTO.setName(tempString);
@@ -44,6 +45,7 @@ public class CreateStudyForm {
         tempInt = sc.nextInt();
         studyDTO.setMaxAbsentTime(tempInt);
         System.out.println("-장소: ");
+        sc.nextLine();
         tempString = sc.nextLine();
         studyDTO.setLocation(tempString);
         System.out.println("-은행 이름: ");
@@ -53,6 +55,7 @@ public class CreateStudyForm {
         tempInt = sc.nextInt();
         studyDTO.setBankAccount(tempInt);
         System.out.println("-시작 날짜(ex. 2022-11-20): ");
+        sc.nextLine();
         tempString = sc.nextLine();
         studyDTO.setStartDate(tempString);
 

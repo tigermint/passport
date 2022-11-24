@@ -15,6 +15,16 @@ public class StudyDAO {
     }
 
     public static ResultSet createStudy(StudyDTO study) throws SQLException {
+        String tempSql = "select max(S.id)\n" +
+                "from study_ S";
+
+        PreparedStatement pstmt = conn.prepareStatement(tempSql);
+
+        ResultSet rset = pstmt.executeQuery();
+        if(rset.next()){
+            study.setId(rset.getInt(1) + 1);
+        }
+
         ResultSet rs = null;
         sb = new StringBuffer();
         sb.append("Insert into STUDY_ ");
@@ -37,9 +47,9 @@ public class StudyDAO {
 
         try {
             rs = ps.executeQuery();
-            LOG.info("Study created");
+//            LOG.info("Study created");
         } catch (SQLException e) {
-            LOG.warning("Study creation failed");
+//            LOG.warning("Study creation failed");
             throw new RuntimeException(e);
         }
 
@@ -54,10 +64,10 @@ public class StudyDAO {
 
         try {
             rs = stmt.executeQuery(sql);
-            LOG.info("Study List successfully retrieved.");
+//            LOG.info("Study List successfully retrieved.");
         } catch (SQLException e) {
-            LOG.warning("");
-            LOG.warning("Error retrieving Study List.");
+//            LOG.warning("");
+//            LOG.warning("Error retrieving Study List.");
             throw new RuntimeException(e);
         }
 

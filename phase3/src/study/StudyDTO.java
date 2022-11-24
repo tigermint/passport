@@ -107,7 +107,6 @@ public class StudyDTO {
     }
 
     public void setStartDate(String startDate) throws ParseException {
-
         Date date = new Date(new SimpleDateFormat("yyyy-MM-dd").parse(startDate).getTime());
         this.startDate = date;
     }
