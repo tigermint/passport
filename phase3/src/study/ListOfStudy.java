@@ -24,7 +24,7 @@ public class ListOfStudy {
         rs = readListOfStudy(stmt);
     }
 
-    public Integer displayListOfStudy() throws SQLException {
+    public void displayListOfStudy() throws SQLException {
         sc = new Scanner(System.in);
         ResultSet rs = readListOfStudy(stmt);
         System.out.println("=================================================================================================================================\n");
@@ -49,8 +49,9 @@ public class ListOfStudy {
             System.out.println(String.format("%-10s  ", rs.getString("start_date")));
         }
         System.out.println("---------------------------------------------------------------------------------------------------------------------------------");
-        System.out.println("\n1. 스터디 번호 선택 | 2. 스터디 생성");
-        System.out.print("번호를 입력하세요: ");
-        return sc.nextInt();
+        System.out.println("=================================================================================================================================\n");
+//        System.out.println("\n1. 스터디 번호 선택 | 2. 스터디 생성");
+//        System.out.print("번호를 입력하세요: ");
+//        return sc.nextInt();
     }
 }
