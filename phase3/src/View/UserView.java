@@ -91,4 +91,9 @@ public class UserView {
         System.out.println(userDTO);
         return userDAO.join(userDTO);
     }
+
+    public static void myView() {
+        System.out.println("==========================================");
+        System.out.println("1. 로그아웃\t2. 스터디 목록 조회\t3. 스터디 생성\t4. 내정보 조회\t5. 종료 ");
+    }
 }

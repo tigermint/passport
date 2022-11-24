@@ -22,7 +22,6 @@ public class ListOfStudy {
         stmt = conn.createStatement();
         studyDAO = new StudyDAO();
         rs = readListOfStudy(stmt);
-
     }
 
     public Integer displayListOfStudy() throws SQLException {
