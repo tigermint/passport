@@ -31,18 +31,17 @@ public class UserView {
         switch (userDAO.login(id, pw)) {
             case 1:
                 System.out.println("로그인 되었습니다.");
-                return 1;
+                return Integer.parseInt(id);
             case 0:
                 System.out.println("로그인에 실패하였습니다.");
-                SystemView.exit();
-                return 0;
+                return -1;
             case -1:
                 System.out.println("사용자가 존재하지 않습니다. 회원가입을 해주세요");
-                return -1;
+                return -2;
             default:
                 break;
         }
-        return -2;
+        return -3;
     }
 
     public static int joinView() {
@@ -94,6 +93,6 @@ public class UserView {
 
     public static void myView() {
         System.out.println("==========================================");
-        System.out.println("1. 로그아웃\t2. 스터디 목록 조회\t3. 스터디 생성\t4. 내정보 조회\t5. 종료 ");
+        System.out.println("1.로그아웃    2.스터디 목록 조회    3.스터디 생성    4.내정보 조회    5.종료 ");
     }
 }
