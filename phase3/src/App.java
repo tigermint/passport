@@ -1,22 +1,29 @@
-import java.sql.Connection;
-import java.util.logging.Logger;
+import View.SystemView;
+import View.UserView;
+import java.util.Scanner;
 
-import static util.DatabaseUtil.getConnection;
 
 public class App {
     public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
 
-        Logger Log = Logger.getGlobal();
-
-        // page 호출 -> main, main에서 컴포넌트화 된 구성 요소들 호출
-        System.out.println("Hello world!");
-        // 연결 테스트
-        Connection conn = getConnection();
-        if (conn != null) {
-            Log.info("Connection success");
-            return;
+        SystemView.start();
+        while (true) {
+            System.out.print("\n메뉴를 선택해주세요: ");
+            switch (sc.nextInt()) {
+                case 1:
+                    UserView.loginView();
+                    break;
+                case 2:
+                    UserView.joinView();
+                    break;
+                case 3:
+                    SystemView.exit();
+                    break;
+                default:
+                    System.out.println("###### 올바른 메뉴를 선택해주세요 #####");
+                    break;
+            }
         }
-        Log.warning("Connection failed");
-        return;
     }
 }

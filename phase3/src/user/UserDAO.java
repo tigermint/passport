@@ -49,7 +49,7 @@ public class UserDAO {
             pstmt.setString(7, Boolean.toString(true));
             return pstmt.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException(e); // error
+            throw new RuntimeException(e); // db error
         }
     }
 }
