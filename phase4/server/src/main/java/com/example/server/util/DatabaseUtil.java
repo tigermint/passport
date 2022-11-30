@@ -1,4 +1,6 @@
-package util;
+package com.example.server.util;
+
+import lombok.extern.java.Log;
 
 import java.sql.*;
 import java.util.logging.Logger;
@@ -12,8 +14,10 @@ public class DatabaseUtil {
     public static Connection getConnection() {
         try {
             Class.forName("oracle.jdbc.driver.OracleDriver");
+            Logger.getGlobal().info("load driver success");
             return DriverManager.getConnection(URL, USER_ID, USER_PASSWD);
         } catch (Exception e) {
+            Logger.getGlobal().warning("load driver failed");
             e.printStackTrace();
         }
         return null;
@@ -43,9 +47,11 @@ public class DatabaseUtil {
         try {
             if (conn != null && !conn.isClosed()) {
                 conn.commit();
+                Logger.getGlobal().info("commit success");
             }
         } catch (SQLException e) {
             e.printStackTrace();
+            Logger.getGlobal().warning("commit failed");
         }
     }
 
