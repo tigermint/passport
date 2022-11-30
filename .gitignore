@@ -37,13 +37,7 @@
 # ignore .idea folder
 .idea/
 
-<<<<<<< HEAD
-# ignoe Test folder
-test/
 
-=======
-#ingnore Test folder
-test/
 
 #ignore StudyDAOTest
 src/test/java/dao/StudyDAOTest.java
