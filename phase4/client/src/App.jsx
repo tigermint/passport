@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Landing from "./routes/Landing";
 import Login from "./routes/Login";
+import Signup from "./routes/Signup";
 
 function App() {
   return (
@@ -9,7 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
-        {/* signup */}
+        <Route path="/signup" element={<Signup />} />
         {/* study main */}
         {/* study detail */}
         {/* study create */}
