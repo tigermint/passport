@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ListOfStudyDAO {
+public class ListOfStudyDAO1 {
 
-    static RowMapper<ListDTO> StudyRowMapper = (rs, rowNum) ->
+    static RowMapper<ListDTO> StudyRowMapper1 = (rs, rowNum) ->
             ListDTO.builder()
                     .id(rs.getInt("STUDY_ID"))
                     .name(rs.getString("NAME"))
@@ -25,7 +25,7 @@ public class ListOfStudyDAO {
 
     public JdbcTemplate template = new JdbcTemplate(jdbcTemplateConfig.dataSource());
 
-    public String query = "select STUDY_ID,\n" +
+    public String query1 = "select STUDY_ID,\n" +
             "       STUDY_.NAME,\n" +
             "       STUDY_.START_DATE,\n" +
             "       count(*) CUR_PARTICIPANTS,\n" +
@@ -43,9 +43,12 @@ public class ListOfStudyDAO {
             "         STUDY_.NAME,\n" +
             "         STUDY_.START_DATE,\n" +
             "         STUDY_.MAX_PARTICIPANTS,\n" +
-            "         STUDY_.IS_COMPLETE";
+            "         STUDY_.IS_COMPLETE\n" +
+            "order by STUDY_ID";
 
-    public List<ListDTO> getAllStudyDAO() {
-        return template.query(query, StudyRowMapper);
+    public List<ListDTO> getAllStudyDAO1() {
+        List<ListDTO> result1 = template.query(this.query1, StudyRowMapper1);
+
+        return result1;
     }
 }
