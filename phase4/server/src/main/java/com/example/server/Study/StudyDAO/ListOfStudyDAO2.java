@@ -1,6 +1,6 @@
 package com.example.server.Study.StudyDAO;
 
-import com.example.server.Study.StudyDTO.ListDTO;
+import com.example.server.Study.StudyDTO.StudyListDTO;
 import com.example.server.config.JdbcTemplateConfig;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -11,11 +11,11 @@ import java.util.List;
 @Component
 public class ListOfStudyDAO2 {
 
-    static RowMapper<ListDTO> StudyRowMapper2 = (rs, rowNum) ->
-            ListDTO.builder()
+    static RowMapper<StudyListDTO> StudyRowMapper2 = (rs, rowNum) ->
+            StudyListDTO.builder()
                     .id(rs.getInt("STUDY_ID"))
-                    .Category(rs.getString("CATEGORY").split(","))
-                    .Description(rs.getString("DESCRIPTION"))
+                    .category(rs.getString("CATEGORY").split(","))
+                    .description(rs.getString("DESCRIPTION"))
                     .build();
 
     public JdbcTemplateConfig jdbcTemplateConfig = new JdbcTemplateConfig();
@@ -32,8 +32,8 @@ public class ListOfStudyDAO2 {
             "  and STUDY_CATEGORY.CATEGORY_ID = CATEGORY.ID\n" +
             "order by STUDY_ID";
 
-    public List<ListDTO> getAllStudyDAO2() {
-        List<ListDTO> result2 = template.query(query2, StudyRowMapper2);
+    public List<StudyListDTO> getAllStudyDAO2() {
+        List<StudyListDTO> result2 = template.query(query2, StudyRowMapper2);
         return result2;
     }
 }
