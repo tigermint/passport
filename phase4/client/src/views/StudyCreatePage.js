@@ -1,8 +1,8 @@
 import { useTheme } from '@emotion/react';
-import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
+import { AppBar, Toolbar, Typography } from '@mui/material';
 import Checkout from 'ui-component/Checkout/Checkout';
 
-const SamplePage = () => {
+const StudyCreatePage = () => {
   const theme = useTheme();
   return (
     <>
@@ -28,4 +28,4 @@ const SamplePage = () => {
   );
 };
 
-export default SamplePage;
+export default StudyCreatePage;
