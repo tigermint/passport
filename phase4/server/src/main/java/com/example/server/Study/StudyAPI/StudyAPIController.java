@@ -2,9 +2,11 @@ package com.example.server.Study.StudyAPI;
 
 import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
 import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
+import com.example.server.Study.StudyDAO.JoinStudyDAO.JoinStudyDAO;
 import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
 import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
 import com.example.server.Study.StudyDTO.StudyDetailDTO;
+import com.example.server.Study.StudyDTO.StudyJoinDTO;
 import com.example.server.Study.StudyDTO.StudyListDTO;
 import org.springframework.web.bind.annotation.*;
 
@@ -57,6 +59,12 @@ public class StudyAPIController {
         }
 
         return sessionInfo;
+    }
+
+    @PostMapping("/{study__id}")
+    public void joinStudy(@RequestBody StudyJoinDTO studyJoinDTO) {
+        JoinStudyDAO joinStudyDAO = new JoinStudyDAO();
+        joinStudyDAO.joinStudyDAO(studyJoinDTO.getStudy_id(), studyJoinDTO.getUser__id(), "false");
     }
 
 }
