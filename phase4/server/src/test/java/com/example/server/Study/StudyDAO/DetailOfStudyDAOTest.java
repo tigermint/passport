@@ -1,5 +1,7 @@
 package com.example.server.Study.StudyDAO;
 
+import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
+import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
 import com.example.server.Study.StudyDTO.StudyDetailDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;

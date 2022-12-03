@@ -1,4 +1,4 @@
-package com.example.server.Study.StudyDAO;
+package com.example.server.Study.StudyDAO.ListOfStudyDAO;
 
 import com.example.server.Study.StudyDTO.StudyListDTO;
 import com.example.server.config.JdbcTemplateConfig;

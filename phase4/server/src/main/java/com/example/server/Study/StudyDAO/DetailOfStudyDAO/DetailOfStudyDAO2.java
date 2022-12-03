@@ -1,4 +1,4 @@
-package com.example.server.Study.StudyDAO;
+package com.example.server.Study.StudyDAO.DetailOfStudyDAO;
 
 import com.example.server.Study.StudyDTO.StudyDetailDTO;
 import com.example.server.config.JdbcTemplateConfig;
@@ -27,7 +27,8 @@ public class DetailOfStudyDAO2 {
 
     public List<StudyDetailDTO> getDetailOfStudyDAO(String studyId) {
         query = query + studyId;
-        query = query + " GROUP BY SESSION_.STUDY_ID, SESSION_.ROUND, SESSION_.DATE_";
+        query = query + " GROUP BY SESSION_.STUDY_ID, SESSION_.ROUND, SESSION_.DATE_\n" +
+                "ORDER BY SESSION_.ROUND";
         List<StudyDetailDTO> result = template.query(query, StudyDetailMapper);
         return result;
     }

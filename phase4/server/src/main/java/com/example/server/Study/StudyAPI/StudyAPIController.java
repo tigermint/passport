@@ -1,12 +1,12 @@
 package com.example.server.Study.StudyAPI;
 
-import com.example.server.Study.StudyDAO.ListOfStudyDAO1;
-import com.example.server.Study.StudyDAO.ListOfStudyDAO2;
+import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
+import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
+import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
+import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
+import com.example.server.Study.StudyDTO.StudyDetailDTO;
 import com.example.server.Study.StudyDTO.StudyListDTO;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,5 +44,19 @@ public class StudyAPIController {
 
     }
 
+    @GetMapping("/{study__id}")
+    public List<StudyDetailDTO> getDetailStudy(@PathVariable("study__id") String study__id) {
+        DetailOfStudyDAO1 detailOfStudyDAO1 = new DetailOfStudyDAO1();
+        DetailOfStudyDAO2 detailOfStudyDAO2 = new DetailOfStudyDAO2();
+
+        String leaderName = detailOfStudyDAO1.getDetailOfStudyDAO(study__id);
+        List<StudyDetailDTO> sessionInfo = detailOfStudyDAO2.getDetailOfStudyDAO(study__id);
+
+        for (StudyDetailDTO studyDetailDTO : sessionInfo) {
+            studyDetailDTO.setIs_leader(leaderName);
+        }
+
+        return sessionInfo;
+    }
 
 }
