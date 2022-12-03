@@ -15,6 +15,7 @@
         "@mui/utils": "^5.8.6",
         "@tabler/icons": "^1.72.0",
         "apexcharts": "^3.35.3",
+        "dayjs": "^1.11.6",
         "formik": "^2.2.9",
         "framer-motion": "^6.3.16",
         "material-ui-popup-state": "^4.0.1",
@@ -29,6 +30,7 @@
         "react-router-dom": "6.3.0",
         "react-scripts": "^5.0.1",
         "redux": "^4.2.0",
+        "styled-components": "^5.3.6",
         "yup": "^0.32.11"
     },
     "scripts": {

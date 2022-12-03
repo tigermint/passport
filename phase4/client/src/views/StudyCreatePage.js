@@ -1,6 +1,6 @@
-import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
-import StudyCard from 'ui-component/cards/StudyCard';
 import { useTheme } from '@emotion/react';
+import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
+import Checkout from 'ui-component/Checkout/Checkout';
 
 const SamplePage = () => {
   const theme = useTheme();
@@ -8,7 +8,7 @@ const SamplePage = () => {
     <>
       <AppBar
         position="absolute"
-        style={{ backgroundColor: theme.palette.secondary[800] }}
+        style={{ backgroundColor: theme.palette.primary['main'] }}
         elevation={0}
         sx={{
           position: 'relative',
@@ -19,19 +19,11 @@ const SamplePage = () => {
       >
         <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
           <Typography variant="h3" color="inherit" noWrap>
-            스터디 리스트
+            스터디 생성하기
           </Typography>
-          <Button href="/study/create" variant="contained" color="secondary">
-            스터디 생성
-          </Button>
         </Toolbar>
       </AppBar>
-
-      <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6}>
-          <StudyCard />
-        </Grid>
-      </Grid>
+      <Checkout></Checkout>
     </>
   );
 };
