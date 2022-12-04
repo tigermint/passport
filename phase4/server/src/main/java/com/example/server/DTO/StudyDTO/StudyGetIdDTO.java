@@ -1,4 +1,4 @@
-package com.example.server.DTO.StudyCategoryDTO;
+package com.example.server.DTO.StudyDTO;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -6,7 +6,8 @@ import lombok.Setter;
 
 @Builder
 @Getter @Setter
-public class StudyCategoryDTO {
+public class StudyGetIdDTO {
+
     private int id;
-    private String category;
+
 }

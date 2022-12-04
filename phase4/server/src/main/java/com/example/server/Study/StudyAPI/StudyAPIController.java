@@ -1,5 +1,6 @@
 package com.example.server.Study.StudyAPI;
 
+import com.example.server.DAO.StudyCategoryDAO.StudyCategoryDAO;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
 import com.example.server.DAO.StudyDAO.InsertStudyDAO.InsertStudyDAO1;
@@ -52,7 +53,8 @@ public class StudyAPIController {
         insertStudyDAO2.insertStudyDAO2(studyCreateFormDTO, studyInsertDTO1.get(0));
 
         //study_category 테이블에 삽입
-
+        StudyCategoryDAO studyCategoryDAO = new StudyCategoryDAO();
+        studyCategoryDAO.insertStudyCategoryDAO(studyCreateFormDTO);
     }
 
     @GetMapping("/{study__id}")
