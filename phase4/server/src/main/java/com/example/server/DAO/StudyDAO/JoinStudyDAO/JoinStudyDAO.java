@@ -1,4 +1,4 @@
-package com.example.server.Study.StudyDAO.JoinStudyDAO;
+package com.example.server.DAO.StudyDAO.JoinStudyDAO;
 
 import com.example.server.config.JdbcTemplateConfig;
 import org.springframework.jdbc.core.JdbcTemplate;

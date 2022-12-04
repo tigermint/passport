@@ -1,15 +1,16 @@
 package com.example.server.Study.StudyAPI;
 
-import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
-import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
-import com.example.server.Study.StudyDAO.JoinStudyDAO.JoinStudyDAO;
-import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
-import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
-import com.example.server.Study.StudyDTO.StudyDetailDTO;
-import com.example.server.Study.StudyDTO.StudyJoinDTO;
-import com.example.server.Study.StudyDTO.StudyListDTO;
+import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
+import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
+import com.example.server.DAO.StudyDAO.InsertStudyDAO.InsertStudyDAO1;
+import com.example.server.DAO.StudyDAO.InsertStudyDAO.InsertStudyDAO2;
+import com.example.server.DAO.StudyDAO.JoinStudyDAO.JoinStudyDAO;
+import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
+import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
+import com.example.server.DTO.StudyDTO.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,7 +43,15 @@ public class StudyAPIController {
     }
 
     @PostMapping
-    public void addStudy() {
+    public void addStudy(@RequestBody StudyCreateFormDTO studyCreateFormDTO) throws SQLException {
+        InsertStudyDAO1 insertStudyDAO1 = new InsertStudyDAO1();
+        InsertStudyDAO2 insertStudyDAO2 = new InsertStudyDAO2();
+
+        //스터디 테이블에 삽입
+        List<StudyInsertDTO> studyInsertDTO1 = insertStudyDAO1.insertStudyDAO1(String.valueOf(studyCreateFormDTO.getUser_id()));
+        insertStudyDAO2.insertStudyDAO2(studyCreateFormDTO, studyInsertDTO1.get(0));
+
+        //study_category 테이블에 삽입
 
     }
 

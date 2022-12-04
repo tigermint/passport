@@ -1,8 +1,8 @@
 package com.example.server.Study.StudyDAO;
 
-import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
-import com.example.server.Study.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
-import com.example.server.Study.StudyDTO.StudyDetailDTO;
+import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
+import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
+import com.example.server.DTO.StudyDTO.StudyDetailDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 

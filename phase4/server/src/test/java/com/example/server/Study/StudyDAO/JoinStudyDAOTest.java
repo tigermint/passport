@@ -1,6 +1,6 @@
 package com.example.server.Study.StudyDAO;
 
-import com.example.server.Study.StudyDAO.JoinStudyDAO.JoinStudyDAO;
+import com.example.server.DAO.StudyDAO.JoinStudyDAO.JoinStudyDAO;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;

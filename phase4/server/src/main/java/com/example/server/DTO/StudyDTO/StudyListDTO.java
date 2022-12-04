@@ -1,4 +1,4 @@
-package com.example.server.Study.StudyDTO;
+package com.example.server.DTO.StudyDTO;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Builder;

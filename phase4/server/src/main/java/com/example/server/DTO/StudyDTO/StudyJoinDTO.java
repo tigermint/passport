@@ -1,4 +1,4 @@
-package com.example.server.Study.StudyDTO;
+package com.example.server.DTO.StudyDTO;
 
 import lombok.Builder;
 import lombok.Getter;

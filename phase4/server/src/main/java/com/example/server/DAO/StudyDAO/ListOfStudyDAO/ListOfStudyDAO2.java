@@ -1,6 +1,6 @@
-package com.example.server.Study.StudyDAO.ListOfStudyDAO;
+package com.example.server.DAO.StudyDAO.ListOfStudyDAO;
 
-import com.example.server.Study.StudyDTO.StudyListDTO;
+import com.example.server.DTO.StudyDTO.StudyListDTO;
 import com.example.server.config.JdbcTemplateConfig;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;

@@ -1,8 +1,8 @@
 package com.example.server.Study.StudyDAO;
 
-import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
-import com.example.server.Study.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
-import com.example.server.Study.StudyDTO.StudyListDTO;
+import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
+import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
+import com.example.server.DTO.StudyDTO.StudyListDTO;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
