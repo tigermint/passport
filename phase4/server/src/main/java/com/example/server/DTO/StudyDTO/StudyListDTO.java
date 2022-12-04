@@ -40,6 +40,7 @@ public class StudyListDTO {
     private String[] category;
     @JsonProperty(value = "description")
     private String description;
-
+    @JsonProperty(value = "is_participating")
+    private String is_participating;
 
 }
