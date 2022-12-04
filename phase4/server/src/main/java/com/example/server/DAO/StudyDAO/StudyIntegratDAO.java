@@ -15,6 +15,7 @@ public class StudyIntegratDAO {
             "from PARTICIPATE\n";
 
     public boolean isParticipate(String studyId, String userId) {
+        System.out.println("userId = " + userId);
         query = query + "where STUDY_ID = " + studyId + " and USER__ID = " + userId;
         List<Boolean> query1 = template.query(query, (rs, rowNum) -> {
             return true;

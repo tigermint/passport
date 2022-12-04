@@ -20,30 +20,30 @@ import java.util.List;
 @RequestMapping("/study")
 public class StudyAPIController {
 
-//    @GetMapping
-//    public List<StudyListDTO> getAllStudy() {
-//        ListOfStudyDAO1 listOfStudyDAO1 = new ListOfStudyDAO1();
-//        ListOfStudyDAO2 listOfStudyDAO2 = new ListOfStudyDAO2();
-//
-//        List<StudyListDTO> allStudyDAO1 = listOfStudyDAO1.getAllStudyDAO1();
-//        List<StudyListDTO> allStudyDAO2 = listOfStudyDAO2.getAllStudyDAO2();
-//
-//        ArrayList<String> category;
-//
-//        for (StudyListDTO studyListDTO1 : allStudyDAO1) {
-//            category = new ArrayList<>();
-//            for (StudyListDTO studyListDTO2 : allStudyDAO2) {
-//                if (studyListDTO1.getId().equals(studyListDTO2.getId())) {
-//                    category.add(studyListDTO2.getCategory()[0]);
-//                    studyListDTO1.setCategory(studyListDTO2.getCategory());
-//                    studyListDTO1.setDescription(studyListDTO2.getDescription());
-//                }
-//                studyListDTO1.setCategory(category.toArray(new String[0]));
-//            }
-//        }
-//        System.out.println("StudyAPIController.getAllStudy");
-//        return allStudyDAO1;
-//    }
+    @GetMapping
+    public List<StudyListDTO> getAllStudy() {
+        ListOfStudyDAO1 listOfStudyDAO1 = new ListOfStudyDAO1();
+        ListOfStudyDAO2 listOfStudyDAO2 = new ListOfStudyDAO2();
+
+        List<StudyListDTO> allStudyDAO1 = listOfStudyDAO1.getAllStudyDAO1();
+        List<StudyListDTO> allStudyDAO2 = listOfStudyDAO2.getAllStudyDAO2();
+
+        ArrayList<String> category;
+
+        for (StudyListDTO studyListDTO1 : allStudyDAO1) {
+            category = new ArrayList<>();
+            for (StudyListDTO studyListDTO2 : allStudyDAO2) {
+                if (studyListDTO1.getId().equals(studyListDTO2.getId())) {
+                    category.add(studyListDTO2.getCategory()[0]);
+                    studyListDTO1.setCategory(studyListDTO2.getCategory());
+                    studyListDTO1.setDescription(studyListDTO2.getDescription());
+                }
+                studyListDTO1.setCategory(category.toArray(new String[0]));
+            }
+        }
+        System.out.println("StudyAPIController.getAllStudy");
+        return allStudyDAO1;
+    }
 
     @PostMapping
     public void addStudy(@RequestBody StudyCreateFormDTO studyCreateFormDTO) throws SQLException {
@@ -60,8 +60,7 @@ public class StudyAPIController {
     }
 
     @GetMapping("/{study__id}")
-    public StudyIntegrateDTO getDetailStudy(@PathVariable("study__id") String study__id, @RequestBody String user__id) {
-        System.out.println("study__id = " + study__id);
+    public StudyIntegrateDTO getDetailStudy(@PathVariable("study__id") String study__id, @RequestBody IsParticipateUserIdDTO user__id) {
         DetailOfStudyDAO1 detailOfStudyDAO1 = new DetailOfStudyDAO1();
         DetailOfStudyDAO2 detailOfStudyDAO2 = new DetailOfStudyDAO2();
         StudyIntegratDAO studyIntegratDAO = new StudyIntegratDAO();
@@ -98,7 +97,7 @@ public class StudyAPIController {
         //==========================================
 
 
-        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(0).getId()), user__id);
+        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(0).getId()), user__id.getUserId());
 
         if (participate) {
             allStudyDAO1.get(0).setIs_participating("true");
