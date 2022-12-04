@@ -1,5 +1,6 @@
 package com.example.server.Study.StudyAPI;
 
+import com.example.server.DAO.SessionDAO.JoinSessionDAO;
 import com.example.server.DAO.StudyCategoryDAO.StudyCategoryDAO;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
@@ -13,6 +14,8 @@ import com.example.server.DTO.StudyDTO.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +49,7 @@ public class StudyAPIController {
     }
 
     @PostMapping
-    public void addStudy(@RequestBody StudyCreateFormDTO studyCreateFormDTO) throws SQLException {
+    public void addStudy(@RequestBody StudyCreateFormDTO studyCreateFormDTO) throws SQLException, ParseException {
         InsertStudyDAO1 insertStudyDAO1 = new InsertStudyDAO1();
         InsertStudyDAO2 insertStudyDAO2 = new InsertStudyDAO2();
 
@@ -57,6 +60,13 @@ public class StudyAPIController {
         //study_category 테이블에 삽입
         StudyCategoryDAO studyCategoryDAO = new StudyCategoryDAO();
         studyCategoryDAO.insertStudyCategoryDAO(studyCreateFormDTO);
+
+        //session 테이블에 스터디 장 삽입
+        JoinSessionDAO joinSessionDAO = new JoinSessionDAO();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        joinSessionDAO.joinSessionDAO(studyCreateFormDTO.getTotal_round(), sdf.format(studyCreateFormDTO.getStart_date()));
+
+
     }
 
     @GetMapping("/{study__id}")

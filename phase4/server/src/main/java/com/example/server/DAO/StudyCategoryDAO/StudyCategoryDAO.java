@@ -5,9 +5,11 @@ import com.example.server.DTO.StudyDTO.StudyCreateFormDTO;
 import com.example.server.config.JdbcTemplateConfig;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class StudyCategoryDAO {
 
     public JdbcTemplateConfig jdbcTemplateConfig = new JdbcTemplateConfig();
