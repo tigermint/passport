@@ -12,6 +12,8 @@ public class ParticipateSessionDAO {
     public String query = "insert into ATTENDANTS values (?, ?, ?)";
 
     public int participateSessionDAO(String sessionId, String userId, String StudyId) {
+        System.out.println("sessionId = " + sessionId);
+        System.out.println("StudyId = " + StudyId);
         int result = template.update(query, sessionId, userId, StudyId);
         return result;
     }

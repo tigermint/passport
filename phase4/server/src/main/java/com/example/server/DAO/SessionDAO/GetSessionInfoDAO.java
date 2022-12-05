@@ -53,6 +53,8 @@ public class GetSessionInfoDAO {
         ReturnOfSessionInfoAPIDTO returnOfSessionInfoAPIDTO = new ReturnOfSessionInfoAPIDTO();
         List<AttendantsDTO> attendantsDTOS = new ArrayList<AttendantsDTO>();
 
+        System.out.println("SessionInfoDTO = " + SessionInfoDTO.getStudy__id());
+        System.out.println("SessionInfoDTO.getSession_id() = " + SessionInfoDTO.getSession_id());
 
         //Response Json에 공통값 처리
         returnOfSessionInfoAPIDTO.setID(query1.get(0).getID());

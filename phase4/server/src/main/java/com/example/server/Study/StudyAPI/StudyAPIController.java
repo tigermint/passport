@@ -16,6 +16,7 @@ import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
 import com.example.server.DAO.StudyDAO.StudyIntegratDAO;
 import com.example.server.DTO.Session.ReturnOfSessionInfoAPIDTO;
 import com.example.server.DTO.Session.getSessionInfoDTO;
+import com.example.server.DTO.Session.user_DTO;
 import com.example.server.DTO.StudyDTO.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,18 +79,18 @@ public class StudyAPIController {
         int maxId = getMaxIdOfStudyDAO.getMaxIdOfStudyDAO();
         joinStudyDAO.joinStudyDAO(String.valueOf(maxId), String.valueOf(studyCreateFormDTO.getUser_id()), "true");
 
-        //attendants 테이블에 스터디 장 삽입
-        GetMaxIdOfSessionDAO getMaxIdOfSessionDAO = new GetMaxIdOfSessionDAO();
-        int maxIdOfSession = getMaxIdOfSessionDAO.getMaxIdOfStudyDAO();
-        ParticipateSessionDAO participateSessionDAO = new ParticipateSessionDAO();
-
-        for (int i = 0; i < studyCreateFormDTO.getTotal_round(); i++) {
-            System.out.println("i = " + i);
-            System.out.println("maxIdOfSession = " + maxIdOfSession);
-            participateSessionDAO.participateSessionDAO(String.valueOf(studyCreateFormDTO.getUser_id()),
-                            String.valueOf(maxIdOfSession - i),
-                    String.valueOf(maxId));
-        }
+//        //attendants 테이블에 스터디 장 삽입
+//        GetMaxIdOfSessionDAO getMaxIdOfSessionDAO = new GetMaxIdOfSessionDAO();
+//        int maxIdOfSession = getMaxIdOfSessionDAO.getMaxIdOfStudyDAO();
+//        ParticipateSessionDAO participateSessionDAO = new ParticipateSessionDAO();
+//
+//        for (int i = 0; i < studyCreateFormDTO.getTotal_round(); i++) {
+//            System.out.println("i = " + i);
+//            System.out.println("maxIdOfSession = " + maxIdOfSession);
+//            participateSessionDAO.participateSessionDAO(String.valueOf(studyCreateFormDTO.getUser_id()),
+//                    String.valueOf(maxIdOfSession - i),
+//                    String.valueOf(maxId));
+//        }
     }
 
     @GetMapping("/{study__id}")
@@ -110,7 +111,9 @@ public class StudyAPIController {
         ListOfStudyDAO1 listOfStudyDAO1 = new ListOfStudyDAO1();
         ListOfStudyDAO2 listOfStudyDAO2 = new ListOfStudyDAO2();
 
+        //스터디
         List<StudyListDTO> allStudyDAO1 = listOfStudyDAO1.getAllStudyDAO1();
+        //카테고리
         List<StudyListDTO> allStudyDAO2 = listOfStudyDAO2.getAllStudyDAO2();
 
         ArrayList<String> category;
@@ -129,16 +132,16 @@ public class StudyAPIController {
 
         //==========================================
 
-
-        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(0).getId()), user__id.getUser_id());
+        int temp = Integer.parseInt(study__id) - 1;
+        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(temp).getId()), user__id.getUser_id());
 
         if (participate) {
-            allStudyDAO1.get(0).setIs_participating("true");
+            allStudyDAO1.get(temp).setIs_participating("true");
         } else {
-            allStudyDAO1.get(0).setIs_participating("false");
+            allStudyDAO1.get(temp).setIs_participating("false");
         }
         StudyIntegrateDTO studyIntegrateDTO = new StudyIntegrateDTO();
-        studyIntegrateDTO.setStudyListDTO(allStudyDAO1.get(0));
+        studyIntegrateDTO.setStudyListDTO(allStudyDAO1.get(temp));
         studyIntegrateDTO.setSessions(sessionInfo);
         return studyIntegrateDTO;
     }
@@ -161,8 +164,12 @@ public class StudyAPIController {
     }
 
     @PostMapping("/{study__id}/{session_id}")
-    public void joinSession(@PathVariable("study__id") String study__id, @PathVariable("session_id") String session_id) {
+    public void joinSession(@PathVariable("study__id") String study__id, @PathVariable("session_id") String session_id, @RequestBody user_DTO user_DTO) {
+        GetMaxIdOfSessionDAO getMaxIdOfSessionDAO = new GetMaxIdOfSessionDAO();
+        int maxIdOfSession = getMaxIdOfSessionDAO.getMaxIdOfStudyDAO();
+        ParticipateSessionDAO participateSessionDAO = new ParticipateSessionDAO();
 
 
+        participateSessionDAO.participateSessionDAO(user_DTO.getUser__id(), session_id, study__id);
     }
 }

@@ -29,12 +29,12 @@ public class CreateSessionDAO {
 
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
-        int i = 1;
-        while (maxRound > 0) {
-            cal.add(Calendar.DATE, i); //
+        int j = 1;
+        while (j <= maxRound) {
+            cal.add(Calendar.DATE, 1); //
             String resultDate = sdf.format(cal.getTime());
-            int result = template.update(query, StudyId, maxRound, resultDate);
-            maxRound--;
+            int result = template.update(query, StudyId, j, resultDate);
+            j++;
         }
         return 1;
     }
