@@ -1,6 +1,7 @@
 package com.example.server.Study.StudyAPI;
 
-import com.example.server.DAO.SessionDAO.JoinSessionDAO;
+import com.example.server.DAO.SessionDAO.CreateSessionDAO;
+import com.example.server.DAO.SessionDAO.GetSessionInfoDAO;
 import com.example.server.DAO.StudyCategoryDAO.StudyCategoryDAO;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
@@ -11,6 +12,8 @@ import com.example.server.DAO.StudyDAO.JoinStudyDAO.JoinStudyDAO;
 import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO1;
 import com.example.server.DAO.StudyDAO.ListOfStudyDAO.ListOfStudyDAO2;
 import com.example.server.DAO.StudyDAO.StudyIntegratDAO;
+import com.example.server.DTO.Session.ReturnOfSessionInfoAPIDTO;
+import com.example.server.DTO.Session.getSessionInfoDTO;
 import com.example.server.DTO.StudyDTO.*;
 import org.springframework.web.bind.annotation.*;
 
@@ -63,9 +66,9 @@ public class StudyAPIController {
         studyCategoryDAO.insertStudyCategoryDAO(studyCreateFormDTO);
 
         //session 테이블에 스터디 장 삽입
-        JoinSessionDAO joinSessionDAO = new JoinSessionDAO();
+        CreateSessionDAO createSessionDAO = new CreateSessionDAO();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-        joinSessionDAO.joinSessionDAO(studyCreateFormDTO.getTotal_round(), sdf.format(studyCreateFormDTO.getStart_date()));
+        createSessionDAO.joinSessionDAO(studyCreateFormDTO.getTotal_round(), sdf.format(studyCreateFormDTO.getStart_date()));
 
         //participant 테이블에 스터디 장 삽입
         JoinStudyDAO joinStudyDAO = new JoinStudyDAO();
@@ -130,6 +133,17 @@ public class StudyAPIController {
     public void joinStudy(@RequestBody StudyJoinDTO studyJoinDTO) {
         JoinStudyDAO joinStudyDAO = new JoinStudyDAO();
         joinStudyDAO.joinStudyDAO(studyJoinDTO.getStudy_id(), studyJoinDTO.getUser__id(), "false");
+    }
+
+    @GetMapping("/{study__id}/{session_id}")
+    public ReturnOfSessionInfoAPIDTO getSessionInfo(@PathVariable("study__id") String study__id, @PathVariable("session_id") String session_id) {
+        getSessionInfoDTO getSessionInfoDTO = new getSessionInfoDTO();
+        getSessionInfoDTO.setStudy__id(study__id);
+        getSessionInfoDTO.setSession_id(session_id);
+
+        GetSessionInfoDAO getSessionInfoDAO = new GetSessionInfoDAO();
+        ReturnOfSessionInfoAPIDTO returnOfSessionInfoAPIDTO = getSessionInfoDAO.GetSessionInfo(getSessionInfoDTO);
+        return returnOfSessionInfoAPIDTO;
     }
 
 }

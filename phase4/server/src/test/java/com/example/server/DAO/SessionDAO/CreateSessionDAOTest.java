@@ -7,13 +7,13 @@ import java.util.Date;
 
 import static org.junit.Assert.assertEquals;
 
-public class JoinSessionDAOTest {
+public class CreateSessionDAOTest {
 
     @Test
     public void joinSessionDAO() throws ParseException {
-        JoinSessionDAO joinSessionDAO = new JoinSessionDAO();
+        CreateSessionDAO createSessionDAO = new CreateSessionDAO();
         Date date = new Date();
-        int result = joinSessionDAO.joinSessionDAO(5, "2020-01-01");
+        int result = createSessionDAO.joinSessionDAO(5, "2020-01-01");
         assertEquals(1, result);
     }
 

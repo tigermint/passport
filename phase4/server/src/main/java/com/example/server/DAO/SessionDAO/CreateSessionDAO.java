@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 @Component
-public class JoinSessionDAO {
+public class CreateSessionDAO {
     public JdbcTemplateConfig jdbcTemplateConfig = new JdbcTemplateConfig();
 
     public JdbcTemplate template = new JdbcTemplate(jdbcTemplateConfig.dataSource());
