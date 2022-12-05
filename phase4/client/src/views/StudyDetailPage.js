@@ -1,21 +1,28 @@
 import { AppBar, Button, Card, CardContent, Chip, Grid, Toolbar, Typography } from '@mui/material';
 import { useTheme } from '@emotion/react';
 import SessionCard from 'ui-component/cards/SessionCard';
+import SessionModal from 'ui-component/SessionModal';
+import React from 'react';
 
 const Lorem = `t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`;
 
 const SamplePage = () => {
   const theme = useTheme();
-
   const data = {};
+  const [open, setOpen] = React.useState(true);
+
+  function handleClose() {
+    setOpen(false);
+  }
 
   return (
     <>
       <AppBar
         position="absolute"
         style={{ backgroundColor: theme.palette.secondary['800'] }}
-        elevation={0}
+        // elevation={0}
         sx={{
+          zIndex: 1,
           position: 'relative',
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
           borderRadius: 2,
@@ -98,12 +105,23 @@ const SamplePage = () => {
       </Grid>
       <Grid mt={1} container spacing={2}>
         <Grid item xs={6}>
-          <SessionCard />
-        </Grid>
+          <SessionCard
+            clickHandler={() => {
+              // get session data from server
+            }}
+            setOpenModal={setOpen}
+          />{' '}
+        </Grid>{' '}
         <Grid item xs={6}>
-          <SessionCard />
+          <SessionCard
+            clickHandler={() => {
+              // get session data from server
+            }}
+            setOpenModal={setOpen}
+          />{' '}
         </Grid>
       </Grid>
+      <SessionModal data={data} open={open} onClose={handleClose} />
     </>
   );
 };
