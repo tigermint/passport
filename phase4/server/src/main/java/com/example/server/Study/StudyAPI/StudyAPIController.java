@@ -1,6 +1,8 @@
 package com.example.server.Study.StudyAPI;
 
+import com.example.server.DAO.AttendantsDAO.ParticipateSessionDAO;
 import com.example.server.DAO.SessionDAO.CreateSessionDAO;
+import com.example.server.DAO.SessionDAO.GetMaxIdOfSessionDAO;
 import com.example.server.DAO.SessionDAO.GetSessionInfoDAO;
 import com.example.server.DAO.StudyCategoryDAO.StudyCategoryDAO;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
@@ -76,6 +78,18 @@ public class StudyAPIController {
         int maxId = getMaxIdOfStudyDAO.getMaxIdOfStudyDAO();
         joinStudyDAO.joinStudyDAO(String.valueOf(maxId), String.valueOf(studyCreateFormDTO.getUser_id()), "true");
 
+        //attendants 테이블에 스터디 장 삽입
+        GetMaxIdOfSessionDAO getMaxIdOfSessionDAO = new GetMaxIdOfSessionDAO();
+        int maxIdOfSession = getMaxIdOfSessionDAO.getMaxIdOfStudyDAO();
+        ParticipateSessionDAO participateSessionDAO = new ParticipateSessionDAO();
+
+        for (int i = 0; i < studyCreateFormDTO.getTotal_round(); i++) {
+            System.out.println("i = " + i);
+            System.out.println("maxIdOfSession = " + maxIdOfSession);
+            participateSessionDAO.participateSessionDAO(String.valueOf(studyCreateFormDTO.getUser_id()),
+                            String.valueOf(maxIdOfSession - i),
+                    String.valueOf(maxId));
+        }
     }
 
     @GetMapping("/{study__id}")
@@ -146,4 +160,9 @@ public class StudyAPIController {
         return returnOfSessionInfoAPIDTO;
     }
 
+    @PostMapping("/{study__id}/{session_id}")
+    public void joinSession(@PathVariable("study__id") String study__id, @PathVariable("session_id") String session_id) {
+
+
+    }
 }
