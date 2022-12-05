@@ -4,6 +4,7 @@ import com.example.server.DAO.SessionDAO.JoinSessionDAO;
 import com.example.server.DAO.StudyCategoryDAO.StudyCategoryDAO;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO1;
 import com.example.server.DAO.StudyDAO.DetailOfStudyDAO.DetailOfStudyDAO2;
+import com.example.server.DAO.StudyDAO.GetMaxIdOfStudyDAO;
 import com.example.server.DAO.StudyDAO.InsertStudyDAO.InsertStudyDAO1;
 import com.example.server.DAO.StudyDAO.InsertStudyDAO.InsertStudyDAO2;
 import com.example.server.DAO.StudyDAO.JoinStudyDAO.JoinStudyDAO;
@@ -67,7 +68,10 @@ public class StudyAPIController {
         joinSessionDAO.joinSessionDAO(studyCreateFormDTO.getTotal_round(), sdf.format(studyCreateFormDTO.getStart_date()));
 
         //participant 테이블에 스터디 장 삽입
-
+        JoinStudyDAO joinStudyDAO = new JoinStudyDAO();
+        GetMaxIdOfStudyDAO getMaxIdOfStudyDAO = new GetMaxIdOfStudyDAO();
+        int maxId = getMaxIdOfStudyDAO.getMaxIdOfStudyDAO();
+        joinStudyDAO.joinStudyDAO(String.valueOf(maxId), String.valueOf(studyCreateFormDTO.getUser_id()), "true");
 
     }
 
@@ -119,7 +123,6 @@ public class StudyAPIController {
         StudyIntegrateDTO studyIntegrateDTO = new StudyIntegrateDTO();
         studyIntegrateDTO.setStudyListDTO(allStudyDAO1.get(0));
         studyIntegrateDTO.setSessions(sessionInfo);
-
         return studyIntegrateDTO;
     }
 
