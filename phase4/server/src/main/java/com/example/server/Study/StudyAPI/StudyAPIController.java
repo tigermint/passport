@@ -66,6 +66,8 @@ public class StudyAPIController {
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         joinSessionDAO.joinSessionDAO(studyCreateFormDTO.getTotal_round(), sdf.format(studyCreateFormDTO.getStart_date()));
 
+        //participant 테이블에 스터디 장 삽입
+
 
     }
 
@@ -82,7 +84,7 @@ public class StudyAPIController {
             studyDetailDTO.setIs_leader(leaderName);
         }
 
-     //==============================================
+        //==============================================
 
         ListOfStudyDAO1 listOfStudyDAO1 = new ListOfStudyDAO1();
         ListOfStudyDAO2 listOfStudyDAO2 = new ListOfStudyDAO2();
@@ -107,7 +109,7 @@ public class StudyAPIController {
         //==========================================
 
 
-        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(0).getId()), user__id.getUserId());
+        boolean participate = studyIntegratDAO.isParticipate(String.valueOf(allStudyDAO1.get(0).getId()), user__id.getUser_id());
 
         if (participate) {
             allStudyDAO1.get(0).setIs_participating("true");

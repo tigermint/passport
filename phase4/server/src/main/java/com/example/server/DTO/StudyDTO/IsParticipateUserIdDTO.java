@@ -1,18 +1,13 @@
 package com.example.server.DTO.StudyDTO;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
 public class IsParticipateUserIdDTO {
-    private String userId;
 
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
-    }
+    @JsonProperty("user_id")
+    private String user_id;
 }
 
