@@ -1,9 +1,23 @@
 import { AppBar, Button, Grid, Toolbar, Typography } from '@mui/material';
 import StudyCard from 'ui-component/cards/StudyCard';
 import { useTheme } from '@emotion/react';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { studyAction } from 'store/studyReducer';
+import { apiGetStudyList } from 'apis/study';
 
-const SamplePage = () => {
+const StudyPage = () => {
   const theme = useTheme();
+  const dispatch = useDispatch();
+
+  const studyList = useSelector((state) => state.studyReducer.studyList);
+
+  useEffect(() => {
+    apiGetStudyList((studyList) => {
+      dispatch(studyAction.setStudyList(studyList));
+    });
+  }, []);
+
   return (
     <>
       <AppBar
@@ -28,12 +42,14 @@ const SamplePage = () => {
       </AppBar>
 
       <Grid container rowSpacing={3} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-        <Grid item xs={6}>
-          <StudyCard />
-        </Grid>
+        {studyList.map((study) => (
+          <Grid item xs={6}>
+            <StudyCard data={study} />
+          </Grid>
+        ))}
       </Grid>
     </>
   );
 };
 
-export default SamplePage;
+export default StudyPage;

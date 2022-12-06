@@ -18,35 +18,37 @@ const colors = ['info', 'primary', 'secondary'];
 const StudyCard = (props) => {
   const navigate = useNavigate();
 
+  const { data } = props;
+
   return (
-    <CardWrapper idx={props.id} sx={{ minWidth: 275 }}>
+    <CardWrapper idx={data.id} sx={{ minWidth: 275 }}>
       <CardContent>
         {/* categories */}
-        {props.categories &&
-          props.categories.map((category, index) => <Chip key={index} label={category} color={colors[index % 3]} sx={{ mr: 1, mb: 1 }} />)}
+        {data.categories &&
+          data.categories.map((category, index) => <Chip key={index} label={category} color={colors[index % 3]} sx={{ mr: 1, mb: 1 }} />)}
 
         {/* study number */}
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          Study#: {props.id || -1}
+          Study#: {data.id || -1}
         </Typography>
 
         {/* study name */}
         <Typography variant="h2" component="div">
-          {props.name || 'Default Study Name'}
+          {data.name || 'Default Study Name'}
         </Typography>
 
         {/* date */}
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          {props.start_date || '2022-11-26'}
+          {data.start_date || '2022-11-26'}
         </Typography>
 
         {/* description */}
-        <Typography variant="body2">{props.description || 'Default Description'}</Typography>
+        <Typography variant="body2">{data.description || 'Default Description'}</Typography>
       </CardContent>
       {/* participants */}
       <CardActions>
-        <Button size="small" onClick={() => navigate('/study/' + props.id)}>
-          참여하기 ({props.cur_participants || -1} / {props.max_participants || -1})
+        <Button size="small" onClick={() => navigate('/study/' + data.id)}>
+          참여하기 ({data.cur_participants || -1} / {data.max_participants || -1})
         </Button>
       </CardActions>
     </CardWrapper>
