@@ -19,17 +19,29 @@ public class MemberService {
 
     // 회원가입
     public Member join(Member member) {
-        validateDuplicateMember(member);
+        Optional OptionalMember = memberRepository.findByEmail(member.getSchoolEmail());
+        if (OptionalMember.isPresent()) {
+            // 이미 존재하는 email
+            return null;
+        }
         memberRepository.save(member);
         return member;
     }
 
-    private void validateDuplicateMember(Member member){
-        memberRepository.findByEmail(member.getSchoolEmail())
-                .ifPresent(m -> {
-                    throw new IllegalStateException("이미 존재하는 회원정보 입니다");
-                });
+    //login
+    public Member login(String memberEmail, String memberPW) {
+        Optional OptionalMember = memberRepository.findByEmail(memberEmail);
+        if (OptionalMember.isPresent()) {
+            Member member = (Member)OptionalMember.get();
+            if (member.getPassword().equals(memberPW)) {
+                return member;
+            }else{
+                return null;
+            }
+        }
+        return null;
     }
+
 
     public Optional<Member> findOne(String memberEmail) {
         return memberRepository.findByEmail(memberEmail);
