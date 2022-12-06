@@ -87,3 +87,39 @@ export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = true
       });
   }
 }
+
+export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = true) {
+  if (isStub) {
+    onSuccess(stubData2);
+    return true;
+  } else {
+    axios
+      .post('/signup', body)
+      .then((response) => {
+        onSuccess(response.data);
+        return true;
+      })
+      .catch((error) => {
+        onError(error);
+        return false;
+      });
+  }
+}
+
+export function apiPostParticipateStudy(body, onSuccess, onError = () => alert('error'), isStub = false) {
+  if (isStub) {
+    onSuccess();
+    return true;
+  } else {
+    axios
+      .post(`/study/${body.study__id}`, body)
+      .then((response) => {
+        onSuccess(response.data);
+        return true;
+      })
+      .catch((error) => {
+        onError(error);
+        return false;
+      });
+  }
+}

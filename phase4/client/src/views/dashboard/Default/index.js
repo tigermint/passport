@@ -19,13 +19,14 @@ import { useNavigate } from 'react-router';
 const Dashboard = () => {
   const navigate = useNavigate();
   const user = useSelector((state) => state.userReducer.user);
-  if (!user) navigate('/login');
 
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     setLoading(false);
   }, []);
+
+  if (!user) navigate('/login');
 
   return (
     <Grid container spacing={gridSpacing}>

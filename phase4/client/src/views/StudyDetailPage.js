@@ -6,27 +6,46 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { studyAction } from 'store/studyReducer';
-import { apiGetStudyDetail } from 'apis/study';
+import { apiGetStudyDetail, apiPostParticipateStudy } from 'apis/study';
+import { useParams } from 'react-router';
 
 const Lorem = `t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy.`;
 
 const StudyDetailPage = () => {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
+  const { study__id } = useParams();
   const dispatch = useDispatch();
 
   const { studyListDTO: studyInfo, sessions } = useSelector((state) => state.studyReducer.studyDetail);
+  const user = useSelector((state) => state.userReducer.user);
 
   function handleClose() {
     setOpen(false);
   }
 
   useEffect(() => {
-    apiGetStudyDetail({ study__id: 2 }, (studyDetail) => {
+    apiGetStudyDetail({ study__id: study__id }, (studyDetail) => {
       dispatch(studyAction.setStudyDetail(studyDetail));
     });
   }, []);
+
+  // parse study_id from url using useParams
+
+  async function handleClickParticipation(event) {
+    event.preventDefault();
+
+    const result = await apiPostParticipateStudy(
+      {
+        study__id: study__id,
+        user__id: user.id
+      },
+      () => window.location.reload()
+    );
+    if (result) alert('스터디 참여 성공!');
+    else alert('스터디 참여 실패!');
+  }
 
   return (
     <>
@@ -58,7 +77,12 @@ const StudyDetailPage = () => {
             </div>
           </div>
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-            <Button onClick={() => {}} variant="contained" color="secondary">
+            <Button
+              onClick={handleClickParticipation}
+              disabled={studyInfo.isParticipating === 'true'}
+              variant="contained"
+              color="secondary"
+            >
               {studyInfo.isParticipating === 'true' ? '참여중' : '참여하기'}
             </Button>
             <Typography variant="h4" color="inherit" mt={2} noWrap>

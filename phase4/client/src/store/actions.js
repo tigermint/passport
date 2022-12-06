@@ -7,6 +7,7 @@ export const SET_BORDER_RADIUS = '@customization/SET_BORDER_RADIUS';
 
 // action - login reducer
 export const LOGIN = '@user/LOGIN';
+export const SIGNUP = '@user/SIGNUP';
 export const LOGOUT = '@user/LOGOUT';
 
 // action - session reducer

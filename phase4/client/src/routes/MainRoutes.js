@@ -85,7 +85,7 @@ const MainRoutes = {
       element: <StudyCreatePage />
     },
     {
-      path: 'study/:id',
+      path: 'study/:study__id',
       element: <StudyDetailPage />
     },
     {

@@ -13,6 +13,9 @@ import { store } from 'store';
 import 'assets/scss/style.scss';
 import config from './config';
 
+import { PersistGate } from 'redux-persist/integration/react';
+import { persistor } from './store';
+
 // ==============================|| REACT DOM RENDER  ||============================== //
 
 const container = document.getElementById('root');
@@ -21,7 +24,9 @@ root.render(
   <>
     <Provider store={store}>
       <BrowserRouter basename={config.basename}>
-        <App />
+        <PersistGate persistor={persistor}>
+          <App />
+        </PersistGate>
       </BrowserRouter>
     </Provider>
   </>

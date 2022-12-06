@@ -34,14 +34,17 @@ export function apiPostLogin(body, onSuccess, onError = (e) => alert(e), isStub 
 export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = true) {
   if (isStub) {
     onSuccess(stubData2);
+    return true;
   } else {
     axios
       .post('/signup', body)
       .then((response) => {
         onSuccess(response.data);
+        return true;
       })
       .catch((error) => {
         onError(error);
+        return false;
       });
   }
 }

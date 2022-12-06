@@ -34,7 +34,7 @@ const FirebaseLogin = ({ ...others }) => {
     const data = new FormData(event.currentTarget);
     await apiPostLogin(
       {
-        email: data.get('school_email'),
+        school_email: data.get('school_email'),
         password: data.get('password')
       },
       (user) => dispatch(userAction.login(user))
