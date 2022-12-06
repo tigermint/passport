@@ -7,7 +7,9 @@ export const userAction = {
   logout: (payload) => ({ type: actionTypes.LOGOUT, payload })
 };
 
-export const initialState = {};
+export const initialState = {
+  user: null
+};
 
 const userReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -5,10 +5,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { studyAction } from 'store/studyReducer';
 import { apiGetStudyList } from 'apis/study';
+import { useNavigate } from 'react-router';
 
 const StudyPage = () => {
   const theme = useTheme();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.userReducer.user);
+  if (!user) navigate('/login');
 
   const studyList = useSelector((state) => state.studyReducer.studyList);
 

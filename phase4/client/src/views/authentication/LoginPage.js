@@ -29,7 +29,6 @@ const LoginPage = () => {
                 <Grid container spacing={2} alignItems="center" justifyContent="center">
                   <Grid item sx={{ mb: 3 }}>
                     <Link to="/">
-                      {/* TODO: PASSPORT LOGO */}
                       <Logo />
                     </Link>
                   </Grid>
