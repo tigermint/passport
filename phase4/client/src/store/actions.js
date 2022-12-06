@@ -5,6 +5,10 @@ export const MENU_OPEN = '@customization/MENU_OPEN';
 export const SET_FONT_FAMILY = '@customization/SET_FONT_FAMILY';
 export const SET_BORDER_RADIUS = '@customization/SET_BORDER_RADIUS';
 
+// action - login reducer
+export const LOGIN = '@user/LOGIN';
+export const LOGOUT = '@user/LOGOUT';
+
 // action - session reducer
 
 // action - study reducer
