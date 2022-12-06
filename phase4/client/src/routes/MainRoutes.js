@@ -13,10 +13,13 @@ const UtilsColor = Loadable(lazy(() => import('views/utilities/Color')));
 const UtilsShadow = Loadable(lazy(() => import('views/utilities/Shadow')));
 const UtilsTablerIcons = Loadable(lazy(() => import('views/utilities/TablerIcons')));
 
-// sample page routing
+// study page routing
 const StudyPage = Loadable(lazy(() => import('views/StudyPage')));
 const StudyCreatePage = Loadable(lazy(() => import('views/StudyCreatePage')));
 const StudyDetailPage = Loadable(lazy(() => import('views/StudyDetailPage')));
+
+// others routing
+const PassportNotionPage = Loadable(lazy(() => import('views/PassportNotionPage')));
 
 // ==============================|| MAIN ROUTING ||============================== //
 
@@ -84,6 +87,10 @@ const MainRoutes = {
     {
       path: 'study/:id',
       element: <StudyDetailPage />
+    },
+    {
+      path: 'team-passport',
+      element: <PassportNotionPage />
     }
   ]
 };
