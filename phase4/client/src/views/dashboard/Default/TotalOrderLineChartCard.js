@@ -47,7 +47,7 @@ const CardWrapper = styled(MainCard)(({ theme }) => ({
   '&:before': {
     content: '""',
     position: 'absolute',
-    zIndex: 1,
+    zIndex: 10,
     width: 210,
     height: 210,
     background: theme.palette.primary[800],

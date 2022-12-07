@@ -18,12 +18,8 @@ const StudyDetailPage = () => {
   const { study__id } = useParams();
   const dispatch = useDispatch();
 
-  const { studyListDTO: studyInfo, sessions } = useSelector((state) => state.studyReducer.studyDetail);
   const user = useSelector((state) => state.userReducer.user);
-
-  function handleClose() {
-    setOpen(false);
-  }
+  const { studyListDTO: studyInfo, sessions } = useSelector((state) => state.studyReducer.studyDetail);
 
   useEffect(() => {
     apiGetStudyDetail({ study__id: study__id }, (studyDetail) => {
@@ -31,7 +27,9 @@ const StudyDetailPage = () => {
     });
   }, []);
 
-  // parse study_id from url using useParams
+  function handleClose() {
+    setOpen(false);
+  }
 
   async function handleClickParticipation(event) {
     event.preventDefault();
@@ -54,7 +52,7 @@ const StudyDetailPage = () => {
         style={{ backgroundColor: theme.palette.secondary['800'] }}
         // elevation={0}
         sx={{
-          zIndex: 1,
+          zIndex: 0,
           position: 'relative',
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
           borderRadius: 2,

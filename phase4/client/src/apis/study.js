@@ -56,10 +56,16 @@ const stubData2 = {
     description: 'testDescription1',
     is_participating: 'false'
   },
-  sessions: [{ round: 1, date: '2022-11-19', attendants: 3 }]
+  sessions: [
+    { round: 1, date: '2022-12-9', attendants: 0 },
+    { round: 2, date: '2022-12-10', attendants: 0 },
+    { round: 3, date: '2022-12-11', attendants: 0 },
+    { round: 4, date: '2022-12-12', attendants: 0 },
+    { round: 5, date: '2022-12-13', attendants: 0 }
+  ]
 };
 
-export function apiGetStudyList(onSuccess, onError, isStub = true) {
+export function apiGetStudyList(onSuccess, onError, isStub = false) {
   if (isStub) {
     onSuccess(stubData1);
   } else {
@@ -85,24 +91,6 @@ export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = fals
       })
       .catch((error) => {
         onError(error);
-      });
-  }
-}
-
-export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = false) {
-  if (isStub) {
-    onSuccess(stubData2);
-    return true;
-  } else {
-    axios
-      .post('/signup', body)
-      .then((response) => {
-        onSuccess(response.data);
-        return true;
-      })
-      .catch((error) => {
-        onError(error);
-        return false;
       });
   }
 }
