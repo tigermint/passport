@@ -17,7 +17,7 @@ const stubData2 = {
   bank_account: '3333-12-1234567'
 };
 
-export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), isStub = true) {
+export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), isStub = false) {
   if (isStub) {
     onSuccess(stubData1);
     return true;
@@ -36,7 +36,7 @@ export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), i
   }
 }
 
-export async function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = true) {
+export async function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = false) {
   if (isStub) {
     onSuccess(stubData2);
     return true;

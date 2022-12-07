@@ -74,7 +74,7 @@ export function apiGetStudyList(onSuccess, onError, isStub = true) {
   }
 }
 
-export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = true) {
+export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = false) {
   if (isStub) {
     onSuccess(stubData2);
   } else {
@@ -89,7 +89,7 @@ export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = true
   }
 }
 
-export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = true) {
+export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = false) {
   if (isStub) {
     onSuccess(stubData2);
     return true;
@@ -107,7 +107,7 @@ export function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub
   }
 }
 
-export function apiPostParticipateStudy(body, onSuccess, onError = () => alert('error'), isStub = false) {
+export async function apiPostParticipateStudy(body, onSuccess, onError = (e) => alert(e), isStub = false) {
   if (isStub) {
     onSuccess();
     return true;
@@ -122,5 +122,24 @@ export function apiPostParticipateStudy(body, onSuccess, onError = () => alert('
         onError(error);
         return false;
       });
+  }
+}
+
+export async function apiPostCreateStudy(body, onSuccess = () => alert('스터디 생성 성공'), onError = (e) => alert(e), isStub = false) {
+  if (isStub) {
+    onSuccess();
+    return true;
+  } else {
+    const result = await axios
+      .post(`/study`, body)
+      .then((response) => {
+        onSuccess(response.data);
+        return true;
+      })
+      .catch((error) => {
+        onError(error);
+        return false;
+      });
+    return result;
   }
 }
