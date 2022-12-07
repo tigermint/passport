@@ -4,14 +4,15 @@ import * as actionTypes from './actions';
 // actions
 export const studyAction = {
   setStudyList: (payload) => ({ type: actionTypes.SET_STUDY_LIST, payload }),
-  setStudyDetail: (payload) => ({ type: actionTypes.SET_STUDY_DETAIL, payload })
+  setStudyDetail: (payload) => ({ type: actionTypes.SET_STUDY_DETAIL, payload }),
+  setStudyCreateParams: (payload) => ({ type: actionTypes.SET_STUDY_CREATE_PARAMS, payload })
 };
 
 export const initialState = {
   studyList: [{}],
   studyDetail: {
     studyListDTO: {
-      id: 1,
+      id: 2,
       name: 'testInsertStudy1',
       total_round: 5,
       participation_fee: 3000,
@@ -28,7 +29,8 @@ export const initialState = {
       is_participating: 'false'
     },
     sessions: [{ round: 1, date: '2022-11-19', attendants: 3 }]
-  }
+  },
+  studyCreateParams: {}
 };
 
 const studyReducer = (state = initialState, action) => {
@@ -37,6 +39,9 @@ const studyReducer = (state = initialState, action) => {
       return { ...state, studyList: action.payload };
     case actionTypes.SET_STUDY_DETAIL:
       return { ...state, studyDetail: action.payload };
+    case actionTypes.SET_STUDY_CREATE_PARAMS:
+      //
+      return { ...state, studyCreateParams: action.payload };
     default:
       return state;
   }

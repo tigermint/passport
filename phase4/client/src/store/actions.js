@@ -15,3 +15,4 @@ export const LOGOUT = '@user/LOGOUT';
 // action - study reducer
 export const SET_STUDY_LIST = '@study/SET_STUDY_LIST';
 export const SET_STUDY_DETAIL = '@study/SET_STUDY_DETAIL';
+export const SET_STUDY_CREATE_PARAMS = '@study/SET_STUDY_CREATE_PARAMS';

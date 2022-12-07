@@ -11,6 +11,7 @@ import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
 import Link from '@mui/material/Link';
+import { useSelector } from 'react-redux';
 
 const steps = ['스터디 기본정보', '스터디 횟수', '기타 설정'];
 
@@ -30,8 +31,11 @@ function getStepContent(step) {
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
 
+  const studyCreateParams = useSelector((state) => state.studyReducer.studyCreateParams);
+
   const handleNext = () => {
     setActiveStep(activeStep + 1);
+    console.log('studyCreateParams', studyCreateParams);
   };
 
   const handleBack = () => {

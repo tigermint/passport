@@ -5,6 +5,9 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { MenuItem } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { studyAction } from 'store/studyReducer';
+import { useEffect } from 'react';
 
 const categories = [
   {
@@ -18,23 +21,37 @@ const categories = [
   {
     value: '9급',
     label: '9급공무원'
+  },
+  {
+    value: '경찰공무원',
+    label: '경찰공무원'
+  },
+  {
+    value: '간호사',
+    label: '간호사'
+  },
+  {
+    value: '토목기사',
+    label: '토목기사'
+  },
+  {
+    value: '정보처리기사',
+    label: '정보처리기사'
+  },
+  {
+    value: '정보처리기사',
+    label: '정보처리기사'
   }
 ];
 
 export default function AddressForm() {
-  const [category1, setCategory1] = React.useState('');
-  const [category2, setCategory2] = React.useState('');
-  const [category3, setCategory3] = React.useState('');
-
-  const handleChange1 = (event) => {
-    setCategory1(event.target.value);
-  };
-  const handleChange2 = (event) => {
-    setCategory2(event.target.value);
-  };
-  const handleChange3 = (event) => {
-    setCategory3(event.target.value);
-  };
+  const dispatch = useDispatch();
+  const studyCreateParams = useSelector((state) => state.studyReducer.studyCreateParams);
+  const handleChange1 = (e) => dispatch(studyAction.setStudyCreateParams({ ...studyCreateParams, category1: e.target.value }));
+  const handleChange2 = (e) => dispatch(studyAction.setStudyCreateParams({ ...studyCreateParams, category2: e.target.value }));
+  const handleChange3 = (e) => dispatch(studyAction.setStudyCreateParams({ ...studyCreateParams, category3: e.target.value }));
+  const handleChangeName = (e) => dispatch(studyAction.setStudyCreateParams({ ...studyCreateParams, name: e.target.value }));
+  const handleChangeLocation = (e) => dispatch(studyAction.setStudyCreateParams({ ...studyCreateParams, location: e.target.value }));
 
   return (
     <React.Fragment>
@@ -43,17 +60,35 @@ export default function AddressForm() {
       </Typography>
       <Grid container spacing={3}>
         <Grid item xs={12}>
-          <TextField required id="name" name="name" label="스터디 이름" fullWidth variant="standard" />
+          <TextField
+            value={studyCreateParams.name}
+            onChange={handleChangeName}
+            required
+            id="name"
+            name="name"
+            label="스터디 이름"
+            fullWidth
+            variant="standard"
+          />
         </Grid>
         <Grid item xs={12}>
-          <TextField required id="location" name="location" label="스터디 진행 장소" fullWidth variant="standard" />
+          <TextField
+            value={studyCreateParams.location}
+            onChange={handleChangeLocation}
+            required
+            id="location"
+            name="location"
+            label="스터디 진행 장소"
+            fullWidth
+            variant="standard"
+          />
         </Grid>
         <Grid item xs={4}>
           <TextField
             id="standard-select-currency"
             select
             label="첫번째 카테고리"
-            value={category1}
+            value={studyCreateParams.category1}
             onChange={handleChange1}
             helperText="첫번째 카테고리를 입력하세요"
             variant="standard"
@@ -70,7 +105,7 @@ export default function AddressForm() {
             id="standard-select-currency"
             select
             label="두번째 카테고리"
-            value={category2}
+            value={studyCreateParams.category2}
             onChange={handleChange2}
             helperText="두번째 카테고리를 입력하세요"
             variant="standard"
@@ -87,7 +122,7 @@ export default function AddressForm() {
             id="standard-select-currency"
             select
             label="세번째 카테고리"
-            value={category3}
+            value={studyCreateParams.category3}
             onChange={handleChange3}
             helperText="세번째 카테고리를 입력하세요"
             variant="standard"
