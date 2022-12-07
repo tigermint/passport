@@ -17,12 +17,12 @@ const stubData2 = {
   bank_account: '3333-12-1234567'
 };
 
-export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), isStub = false) {
+export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), isStub = true) {
   if (isStub) {
     onSuccess(stubData1);
     return true;
   } else {
-    axios
+    const result = axios
       .post('/login', body)
       .then((response) => {
         onSuccess(response.data);
@@ -32,10 +32,11 @@ export async function apiPostLogin(body, onSuccess, onError = (e) => alert(e), i
         onError(error);
         return false;
       });
+    return result;
   }
 }
 
-export async function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = false) {
+export async function apiPostSignup(body, onSuccess, onError = (e) => alert(e), isStub = true) {
   if (isStub) {
     onSuccess(stubData2);
     return true;
