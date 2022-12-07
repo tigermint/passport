@@ -3,7 +3,6 @@ import View.UserView;
 import study.CreateStudyForm;
 import study.ListOfStudy;
 import user.UserDAO;
-import user.UserDTO;
 
 import java.sql.SQLException;
 import java.text.ParseException;
