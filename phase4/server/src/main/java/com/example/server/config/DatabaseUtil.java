@@ -1,4 +1,4 @@
-package util;
+package com.example.server.config;
 
 import java.sql.*;
 import java.util.logging.Logger;
