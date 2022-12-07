@@ -61,7 +61,7 @@ const FirebaseRegister = ({ ...others }) => {
       window.location.replace('/');
     } else {
       alert('회원가입 실패');
-      window.location.replace('/login');
+      window.location.replace('/signup');
     }
   };
 
