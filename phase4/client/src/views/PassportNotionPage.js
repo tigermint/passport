@@ -1,5 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Card } from '@mui/material';
+import teamPassport from 'assets/images/teamPassport.png';
 
 // project imports
 import MainCard from 'ui-component/cards/MainCard';
@@ -26,7 +27,8 @@ const PassportNotionPage = () => (
     }
   >
     <Card sx={{ overflow: 'hidden' }}>
-      <IFrameWrapper title="Notion Page" width="100%" src="https://www.notion.so/Passport-22-2-DB-876fa71828d9452e9bd2d12d86b62464" />
+      {/* <IFrameWrapper title="Notion Page" width="100%" src="https://www.notion.so/Passport-22-2-DB-876fa71828d9452e9bd2d12d86b62464" /> */}
+      <img src={teamPassport} alt="Passport" width="100%" />
     </Card>
   </MainCard>
 );
