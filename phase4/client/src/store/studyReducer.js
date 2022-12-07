@@ -30,7 +30,17 @@ export const initialState = {
     },
     sessions: [{ round: 1, date: '2022-11-19', attendants: 3 }]
   },
-  studyCreateParams: { start_date: new Date() }
+  studyCreateParams: {
+    name: 'default name',
+    total_round: 5,
+    description: 'default description',
+    participation_fee: '10000',
+    max_participants: '5',
+    max_absent_time: '3',
+    location: 'default location',
+    start_date: '2022-11-26',
+    category: ['7급공무원', '5급공무원', '9급공무원']
+  }
 };
 
 const studyReducer = (state = initialState, action) => {

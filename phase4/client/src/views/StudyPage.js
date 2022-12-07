@@ -29,6 +29,7 @@ const StudyPage = () => {
         style={{ backgroundColor: theme.palette.secondary[800] }}
         elevation={0}
         sx={{
+          zIndex: 1,
           position: 'relative',
           borderBottom: (t) => `1px solid ${t.palette.divider}`,
           borderRadius: 2,

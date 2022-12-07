@@ -10,38 +10,17 @@ import { studyAction } from 'store/studyReducer';
 import { useEffect } from 'react';
 
 const categories = [
-  {
-    value: '5급',
-    label: '5급공무원'
-  },
-  {
-    value: '7급',
-    label: '7급공무원'
-  },
-  {
-    value: '9급',
-    label: '9급공무원'
-  },
-  {
-    value: '경찰공무원',
-    label: '경찰공무원'
-  },
-  {
-    value: '간호사',
-    label: '간호사'
-  },
-  {
-    value: '토목기사',
-    label: '토목기사'
-  },
-  {
-    value: '정보처리기사',
-    label: '정보처리기사'
-  },
-  {
-    value: '정보처리기사',
-    label: '정보처리기사'
-  }
+  { value: '변리사', label: '변리사' },
+  { value: '공인중개사', label: '공인중개사' },
+  { value: '노무사', label: '노무사' },
+  { value: '치위생사', label: '치위생사' },
+  { value: '정보처리기사', label: '정보처리기사' },
+  { value: '간호사', label: '간호사' },
+  { value: '조산사', label: '조산사' },
+  { value: '토목기사', label: '토목기사' },
+  { value: '공인 세무사', label: '공인 세무사' },
+  { value: '법무사', label: '법무사' },
+  { value: '공인회계사', label: '공인회계사' }
 ];
 
 export default function AddressForm() {
