@@ -13,10 +13,10 @@ public class JdbcTemplateConfig {
     @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setUsername("university");
-        dataSource.setPassword("comp322");
+        dataSource.setUsername("project");
+        dataSource.setPassword("1234");
         dataSource.setDriverClassName("oracle.jdbc.driver.OracleDriver");
-        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:orcl");
+        dataSource.setUrl("jdbc:oracle:thin:@localhost:1521:xe");
         return dataSource;
     }
 
