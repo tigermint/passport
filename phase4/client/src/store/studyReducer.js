@@ -30,7 +30,7 @@ export const initialState = {
     },
     sessions: [{ round: 1, date: '2022-11-19', attendants: 3 }]
   },
-  studyCreateParams: {}
+  studyCreateParams: { start_date: new Date() }
 };
 
 const studyReducer = (state = initialState, action) => {
@@ -40,7 +40,6 @@ const studyReducer = (state = initialState, action) => {
     case actionTypes.SET_STUDY_DETAIL:
       return { ...state, studyDetail: action.payload };
     case actionTypes.SET_STUDY_CREATE_PARAMS:
-      //
       return { ...state, studyCreateParams: action.payload };
     default:
       return state;
