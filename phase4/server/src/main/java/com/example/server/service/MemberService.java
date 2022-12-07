@@ -36,10 +36,10 @@ public class MemberService {
             if (member.getPassword().equals(memberPW)) {
                 return member;
             }else{
-                return null;
+                return null; // 비밀번호가 틀린 경우
             }
         }
-        return null;
+        return null; // 해당하는 아이디가 없는 경우
     }
 
 
