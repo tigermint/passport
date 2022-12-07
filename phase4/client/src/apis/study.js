@@ -80,12 +80,12 @@ export function apiGetStudyList(onSuccess, onError, isStub = false) {
   }
 }
 
-export function apiGetStudyDetail(queryParams, onSuccess, onError, isStub = false) {
+export function apiGetStudyDetail(queryParams, body, onSuccess, onError, isStub = false) {
   if (isStub) {
     onSuccess(stubData2);
   } else {
     axios
-      .get(`/study/${queryParams.study__id}`)
+      .get(`/study/${queryParams.study__id}`, { data: body })
       .then((response) => {
         onSuccess(response.data);
       })
