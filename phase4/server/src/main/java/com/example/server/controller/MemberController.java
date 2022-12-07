@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/members")
-@CrossOrigin("http://localhost:3000")
 public class MemberController {
 
     private final MemberService memberService;
