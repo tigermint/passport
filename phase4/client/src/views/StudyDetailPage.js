@@ -22,7 +22,7 @@ const StudyDetailPage = () => {
   const { studyListDTO: studyInfo, sessions } = useSelector((state) => state.studyReducer.studyDetail);
 
   useEffect(() => {
-    apiGetStudyDetail({ study__id: study__id }, (studyDetail) => {
+    apiGetStudyDetail({ study__id: study__id }, { user__id: user.id }, (studyDetail) => {
       dispatch(studyAction.setStudyDetail(studyDetail));
     });
   }, []);
