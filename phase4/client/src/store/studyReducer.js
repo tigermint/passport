@@ -12,34 +12,34 @@ export const initialState = {
   studyList: [{}],
   studyDetail: {
     studyListDTO: {
-      id: 2,
-      name: 'testInsertStudy1',
-      total_round: 5,
-      participation_fee: 3000,
-      cur_participants: 2,
-      max_participants: 4,
-      max_absent_time: 1,
-      is_complete: 'false',
-      location: 'testLocation',
-      bank_name: 'testBank',
-      bank_account: '1111',
-      start_date: '2023-01-10 00:00:00',
-      category: ['간호사', '조산사', '토목기사'],
-      description: 'testDescription1',
-      is_participating: 'false'
+      id: null,
+      name: '',
+      total_round: null,
+      participation_fee: null,
+      cur_participants: null,
+      max_participants: null,
+      max_absent_time: null,
+      is_complete: '',
+      location: '',
+      bank_name: '',
+      bank_account: '',
+      start_date: '',
+      category: [],
+      description: '',
+      is_participating: ''
     },
-    sessions: [{ round: 1, date: '2022-11-19', attendants: 3 }]
+    sessions: [{ round: null, date: '', attendants: null }]
   },
   studyCreateParams: {
     name: 'default name',
     total_round: 5,
-    description: 'default description',
+    description: '',
     participation_fee: '10000',
     max_participants: '5',
     max_absent_time: '3',
     location: 'default location',
     start_date: '2022-11-26',
-    category: ['7급공무원', '5급공무원', '9급공무원']
+    category: ['', '', '']
   }
 };
 
