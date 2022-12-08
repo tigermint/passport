@@ -8,3 +8,5 @@ There was an unexpected error (type=Internal Server Error, status=500).
 Error attempting to get column 'ID' from result set. Cause: java.sql.SQLException: 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가): KO16MSWIN949 ;
 uncategorized SQLException; SQL state [99999]; error code [17056]; 지원되지 않는 문자 집합(클래스 경로에 orai18n.jar 추가): KO16MSWIN949; 
 ```
+
+협업: https://enchanted-vulture-720.notion.site/API-update-2022-12-05-1567e56ee1144793bec72cf5f91f67a2
